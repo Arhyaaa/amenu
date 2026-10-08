@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMenu — Premium Cheat Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader" class="loader">
+  <div class="loader-bg-grid"></div>
+  <div class="loader-content">
+    <div class="loader-logo">
+      <svg viewBox="0 0 200 200" width="140" height="140">
+        <defs>
+          <linearGradient id="amenuGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#e8e8ec"/>
+            <stop offset="60%" stop-color="#a0a0a8"/>
+            <stop offset="100%" stop-color="#6a6a75"/>
+          </linearGradient>
+        </defs>
+        <g>
+          <path d="M 55 140 L 100 30 L 145 140 L 125 140 L 115 115 L 85 115 L 75 140 Z M 92 95 L 108 95 L 100 72 Z" fill="url(#amenuGrad)" stroke="#0a0a0b" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M 130 100 L 175 80 L 155 108 L 130 115 Z" fill="url(#amenuGrad)" stroke="#0a0a0b" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M 40 130 L 90 145 L 75 155 L 35 145 Z" fill="url(#amenuGrad)" stroke="#0a0a0b" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+        <text x="100" y="185" text-anchor="middle" font-family="'Arial Black', Impact, sans-serif" font-size="42" font-weight="900" fill="url(#amenuGrad)" stroke="#0a0a0b" stroke-width="2" letter-spacing="2" font-style="italic">MENU</text>
+      </svg>
+    </div>
+    <div class="loader-status" id="loaderStatus">Initializing core...</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+  <div class="loader-scan"></div>
+</div>
+
+<div class="noise"></div>
+<div class="grid-bg"></div>
+<div class="scroll-bar" id="scrollBar"></div>
+
+<div id="landing" class="landing hidden">
+
+  <nav class="nav">
+    <div class="nav-brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 100 100">
+          <path d="M 22 78 L 50 12 L 78 78 L 65 78 L 58 60 L 42 60 L 35 78 Z M 47 48 L 53 48 L 50 35 Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M 65 48 L 90 38 L 78 55 L 65 60 Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">AMenu</span>
+        <span class="brand-sub">v7.0.0</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#games">Games</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span> UNDETECTED</div>
+      <button class="nav-cta" id="navDiscord">Discord</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge anim-fade-up" style="--delay:0.1s">
+        <span class="pulse-dot"></span>
+        LATEST BUILD · 2026
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-main anim-letter">AMENU</span>
+        <span class="hero-title-sub anim-fade-up" style="--delay:0.4s">PREMIUM CHEAT PANEL</span>
+      </h1>
+      <p class="hero-desc anim-fade-up" style="--delay:0.5s">
+        Panel cheat undetected untuk <b>Free Fire</b> dan <b>FiveM</b>.
+        Lebih dari 250 fitur, anti-deteksi canggih, update mingguan.
+      </p>
+      <div class="hero-buttons anim-fade-up" style="--delay:0.6s">
+        <button class="btn btn-primary" id="scrollBtn">
+          Jelajahi Panel
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn btn-secondary" id="discordBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Join Discord
+        </button>
+      </div>
+      <div class="hero-meta anim-fade-up" style="--delay:0.7s">
+        <div class="meta-item"><div class="meta-num" data-count="250">0</div><div class="meta-label">Features</div></div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><div class="meta-num" data-count="18000">0</div><div class="meta-label">Users</div></div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><div class="meta-num" data-count="99">0</div><div class="meta-label">Uptime %</div></div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><div class="meta-num">0</div><div class="meta-label">Bans</div></div>
+      </div>
+    </div>
+    <div class="hero-corner top-left"></div>
+    <div class="hero-corner top-right"></div>
+    <div class="hero-corner bottom-left"></div>
+    <div class="hero-corner bottom-right"></div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">WHY AMENU</div>
+        <h2>Built for <span>Performance</span></h2>
+        <p>Setiap fitur dirancang dengan fokus pada stealth, responsivitas, dan pengalaman premium.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal"><div class="fc-num">01</div><div class="fc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Undetected</h3><p>Bypass terbaru, HWID spoofer, anti-screenshot, dan stream-proof bawaan.</p></div>
+        <div class="feature-card reveal"><div class="fc-num">02</div><div class="fc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Low Latency</h3><p>Rendering cepat tanpa FPS drop. Dirancang untuk competitive play.</p></div>
+        <div class="feature-card reveal"><div class="fc-num">03</div><div class="fc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div><h3>250+ Features</h3><p>Aimbot, silent aim, ESP, movement, world mods — semua yang kamu butuhin.</p></div>
+        <div class="feature-card reveal"><div class="fc-num">04</div><div class="fc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 11-6.22-8.56M21 3v6h-6"/></svg></div><h3>Weekly Update</h3><p>Update tiap minggu ngikutin patch game biar tetap aman dan stabil.</p></div>
+        <div class="feature-card reveal"><div class="fc-num">05</div><div class="fc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>24/7 Support</h3><p>Discord support aktif, respon cepat, dan guide lengkap untuk member.</p></div>
+        <div class="feature-card reveal"><div class="fc-num">06</div><div class="fc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><h3>Custom Config</h3><p>Save/load config, preset legit/rage, dan share ke teman tanpa ribet.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="games" id="games">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">SELECT GAME</div>
+        <h2>Pilih <span>Panel</span> Kamu</h2>
+        <p>Klik salah satu game untuk membuka panel cheat.</p>
+      </div>
+      <div class="game-grid">
+        <div class="game-card reveal" data-game="ff">
+          <div class="gc-bg"></div>
+          <div class="gc-header">
+            <div class="gc-tag">EMULATOR · PC</div>
+            <div class="gc-status"><span class="dot"></span> ONLINE</div>
+          </div>
+          <div class="gc-icon-holder">
+            <svg viewBox="0 0 64 64" width="56" height="56">
+              <defs>
+                <linearGradient id="ffGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#6a6a75"/>
+                </linearGradient>
+              </defs>
+              <path d="M32 4 L54 14 L54 32 Q54 48 32 60 Q10 48 10 32 L10 14 Z" fill="none" stroke="url(#ffGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M32 14 L46 20 L46 32 Q46 42 32 50 Q18 42 18 32 L18 20 Z" fill="none" stroke="url(#ffGrad)" stroke-width="1.5" opacity="0.5"/>
+              <path d="M24 40 Q32 20 40 40 Q36 36 32 36 Q28 36 24 40 Z" fill="url(#ffGrad)"/>
+              <circle cx="32" cy="28" r="2" fill="url(#ffGrad)"/>
+            </svg>
+          </div>
+          <h3>Free Fire</h3>
+          <p>Battle Royale — Emulator (PC) panel</p>
+          <div class="gc-tags"><span>Aim Lock</span><span>Silent Aim</span><span>ESP</span><span>Brutal</span></div>
+          <button class="gc-btn">Open Panel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="game-card reveal" data-game="fivem">
+          <div class="gc-bg"></div>
+          <div class="gc-header">
+            <div class="gc-tag">PC</div>
+            <div class="gc-status"><span class="dot"></span> ONLINE</div>
+          </div>
+          <div class="gc-icon-holder">
+            <svg viewBox="0 0 64 64" width="56" height="56">
+              <defs>
+                <linearGradient id="fmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#6a6a75"/>
+                </linearGradient>
+              </defs>
+              <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" fill="none" stroke="url(#fmGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+              <polygon points="32,12 48,22 48,42 32,52 16,42 16,22" fill="none" stroke="url(#fmGrad)" stroke-width="1.2" opacity="0.4"/>
+              <path d="M22 24 L32 44 L42 24" fill="none" stroke="url(#fmGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="32" cy="20" r="1.8" fill="url(#fmGrad)"/>
+            </svg>
+          </div>
+          <h3>FiveM</h3>
+          <p>GTA V Multiplayer — Roleplay panel</p>
+          <div class="gc-tags"><span>Aimbot</span><span>Silent Aim</span><span>ESP</span><span>Vehicle</span></div>
+          <button class="gc-btn">Open Panel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">FAQ</div>
+        <h2>Pertanyaan <span>Umum</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal"><div class="faq-q">Apakah ini benar-benar cheat?<span class="faq-icon">+</span></div><div class="faq-a">Ini adalah UI/UX demo presentation. Semua toggle & fitur hanya visual di browser, tidak ada interaksi ke game asli.</div></div>
+        <div class="faq-item reveal"><div class="faq-q">Apakah aman dipakai?<span class="faq-icon">+</span></div><div class="faq-a">100% aman. Tidak ada file inject, tidak ada memory read. Murni presentasi web.</div></div>
+        <div class="faq-item reveal"><div class="faq-q">Game apa saja yang didukung?<span class="faq-icon">+</span></div><div class="faq-a">Demo ini menampilkan dua mockup: Free Fire (Emulator / PC) dan FiveM (GTA V).</div></div>
+        <div class="faq-item reveal"><div class="faq-q">Bisa custom tema?<span class="faq-icon">+</span></div><div class="faq-a">Bisa. Tema hitam-abu jadi default. Semua warna bisa diubah dari menu Setting.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">CONTACT</div>
+        <h2>Hubungi <span>Kami</span></h2>
+        <p>Join komunitas atau tanya langsung ke admin</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card reveal" href="https://discord.gg/JTR8zCT9n" target="_blank">
+          <div class="cc-top">
+            <div class="cc-icon discord"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></div>
+            <div class="cc-status"><span class="dot green"></span> 15.2K Members</div>
+          </div>
+          <h3>Discord</h3>
+          <p>Join server komunitas dan support langsung</p>
+          <div class="cc-handle">discord.gg/amenu</div>
+          <div class="cc-cta">Join Server →</div>
+        </a>
+        <a class="contact-card reveal" href="https://wa.me/6285119313875" target="_blank">
+          <div class="cc-top">
+            <div class="cc-icon whatsapp"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+            <div class="cc-status"><span class="dot green"></span> Online</div>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Chat langsung ke admin support 24/7</p>
+          <div class="cc-handle">+62 812-3456-7890</div>
+          <div class="cc-cta">Chat Now →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="brand-logo small">
+          <svg viewBox="0 0 100 100">
+            <path d="M 22 78 L 50 12 L 78 78 L 65 78 L 58 60 L 42 60 L 35 78 Z M 47 48 L 53 48 L 50 35 Z" fill="currentColor"/>
+            <path d="M 65 48 L 90 38 L 78 55 L 65 60 Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <span>AMenu © 2026</span>
+      </div>
+      <div class="footer-center">For presentation purposes only — visual demo</div>
+      <div class="footer-right">
+        <a href="https://discord.gg/JTR8zCT9n" target="_blank">Discord</a>
+        <a href="https://wa.me/6285119313875" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div id="panel" class="panel-wrap hidden">
+  <div class="panel-backdrop"></div>
+
+  <!-- ============ FREE FIRE PANEL ============ -->
+  <div class="panel-window hidden" id="panelFF">
+    <header class="p-topbar">
+      <div class="p-brand">
+        <div class="brand-logo small">
+          <svg viewBox="0 0 100 100">
+            <path d="M 22 78 L 50 12 L 78 78 L 65 78 L 58 60 L 42 60 L 35 78 Z M 47 48 L 53 48 L 50 35 Z" fill="currentColor"/>
+            <path d="M 65 48 L 90 38 L 78 55 L 65 60 Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="p-brand-text">AMenu<small>Free Fire · Emulator</small></div>
+      </div>
+      <div class="p-topbar-center"><div class="p-tab-indicator" id="ffIndicator">Aim</div></div>
+      <div class="p-topbar-right">
+        <div class="p-badge green"><span class="dot green"></span> INJECTED</div>
+        <div class="p-badge">PREMIUM</div>
+        <button class="p-close" data-close>✕</button>
+      </div>
+    </header>
+
+    <div class="p-body">
+      <aside class="p-sidebar">
+        <nav class="p-nav-list">
+          <button class="p-nav active" data-tab="aim"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span>Aim</span></button>
+          <button class="p-nav" data-tab="silent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 L15 9 L22 9 L16 13 L18 20 L12 16 L6 20 L8 13 L2 9 L9 9 Z"/></svg><span>Silent Aim</span></button>
+          <button class="p-nav" data-tab="visual"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual ESP</span></button>
+          <button class="p-nav" data-tab="brutal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg><span>Brutal</span></button>
+          <button class="p-nav" data-tab="misc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Misc</span></button>
+          <button class="p-nav" data-tab="config"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg><span>Config</span></button>
+          <button class="p-nav" data-tab="setting"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg><span>Setting</span></button>
+        </nav>
+        <div class="p-sidebar-footer">
+          <div class="p-stat"><span>FPS</span><b id="ffFps">120</b></div>
+          <div class="p-stat"><span>PING</span><b id="ffPing">28ms</b></div>
+        </div>
+      </aside>
+
+      <main class="p-content">
+        <section class="p-tab active" data-tab="aim">
+          <div class="p-head"><h2>Aim Assist</h2><p>Auto-aim dan targeting system untuk Free Fire Emulator</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Core Aim</h3>
+              <label class="p-row"><span>Enable Aimbot</span><input type="checkbox" class="switch" data-key="ff_aim"></label>
+              <label class="p-row"><span>Aim Lock</span><input type="checkbox" class="switch" data-key="ff_lock"></label>
+              <label class="p-row"><span>Auto Headshot</span><input type="checkbox" class="switch" data-key="ff_hs"></label>
+              <label class="p-row"><span>Through Wall</span><input type="checkbox" class="switch" data-key="ff_through"></label>
+              <label class="p-row"><span>Magnet Pull</span><input type="checkbox" class="switch" data-key="ff_magnet"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Targeting</h3>
+              <label class="p-row"><span>Target Mode</span><select class="select" data-key="ff_target"><option>Nearest</option><option>Lowest HP</option><option>Crosshair</option></select></label>
+              <label class="p-row"><span>Priority</span><select class="select" data-key="ff_prio"><option>Distance</option><option>HP %</option><option>Threat</option></select></label>
+              <label class="p-row"><span>FOV Radius</span><input type="range" class="range" min="1" max="360" value="120" data-key="ff_fov"></label>
+              <label class="p-row"><span>Smoothness</span><input type="range" class="range" min="1" max="20" value="5" data-key="ff_smooth"></label>
+              <label class="p-row"><span>Range</span><input type="range" class="range" min="1" max="100" value="50" data-key="ff_range"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Advanced</h3>
+              <label class="p-row"><span>Predict Movement</span><input type="checkbox" class="switch" data-key="ff_predict"></label>
+              <label class="p-row"><span>Ignore Knocked</span><input type="checkbox" class="switch" data-key="ff_ignKnock"></label>
+              <label class="p-row"><span>Ignore Bot</span><input type="checkbox" class="switch" data-key="ff_ignBot"></label>
+              <label class="p-row"><span>Humanized Aim</span><input type="checkbox" class="switch" data-key="ff_human"></label>
+              <label class="p-row"><span>Randomize Angle</span><input type="range" class="range" min="0" max="10" value="0" data-key="ff_randAngle"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Auto Fire</h3>
+              <label class="p-row"><span>Auto Shoot</span><input type="checkbox" class="switch" data-key="ff_autoShoot"></label>
+              <label class="p-row"><span>Auto Scope</span><input type="checkbox" class="switch" data-key="ff_autoScope"></label>
+              <label class="p-row"><span>Trigger Bot</span><input type="checkbox" class="switch" data-key="ff_trigger"></label>
+              <label class="p-row"><span>Delay (ms)</span><input type="range" class="range" min="0" max="300" value="50" data-key="ff_trigDelay"></label>
+              <label class="p-row"><span>Hit Chance</span><input type="range" class="range" min="0" max="100" value="90" data-key="ff_hitChance"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="silent">
+          <div class="p-head"><h2>Silent Aim</h2><p>Bullet redirect tanpa mengubah crosshair — untuk Free Fire Emulator</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Core Silent</h3>
+              <label class="p-row"><span>Enable Silent Aim</span><input type="checkbox" class="switch" data-key="ff_silentEnable"></label>
+              <label class="p-row"><span>Silent Mode</span><select class="select" data-key="ff_silentMode"><option>Perfect</option><option>Legit</option><option>Rage</option><option>Custom</option></select></label>
+              <label class="p-row"><span>Always On</span><input type="checkbox" class="switch" data-key="ff_silentAlways"></label>
+              <label class="p-row"><span>Toggle Key</span><select class="select" data-key="ff_silentKey"><option>Right Mouse</option><option>Left Alt</option><option>Caps Lock</option><option>Shift</option><option>X</option></select></label>
+              <label class="p-row"><span>Only On ADS</span><input type="checkbox" class="switch" data-key="ff_silentAds"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Hitbox</h3>
+              <label class="p-row"><span>Target Bone</span><select class="select" data-key="ff_silentBone"><option>Head</option><option>Neck</option><option>Chest</option><option>Nearest</option></select></label>
+              <label class="p-row"><span>Hitbox Scale</span><input type="range" class="range" min="1" max="20" value="8" data-key="ff_silentHitbox"></label>
+              <label class="p-row"><span>Auto Headshot</span><input type="checkbox" class="switch" data-key="ff_silentHs"></label>
+              <label class="p-row"><span>Multi-Target</span><input type="checkbox" class="switch" data-key="ff_silentMulti"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Advanced</h3>
+              <label class="p-row"><span>Through Wall</span><input type="checkbox" class="switch" data-key="ff_silentWall"></label>
+              <label class="p-row"><span>Ignore Knocked</span><input type="checkbox" class="switch" data-key="ff_silentIgnKnock"></label>
+              <label class="p-row"><span>Ignore Bot</span><input type="checkbox" class="switch" data-key="ff_silentIgnBot"></label>
+              <label class="p-row"><span>Visible Only</span><input type="checkbox" class="switch" data-key="ff_silentVisible"></label>
+              <label class="p-row"><span>Max Distance</span><input type="range" class="range" min="10" max="300" value="150" data-key="ff_silentDist"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Fine Tune</h3>
+              <label class="p-row"><span>Miss Chance</span><input type="range" class="range" min="0" max="50" value="0" data-key="ff_silentMiss"></label>
+              <label class="p-row"><span>Delay (ms)</span><input type="range" class="range" min="0" max="200" value="20" data-key="ff_silentDelay"></label>
+              <label class="p-row"><span>Humanize</span><input type="checkbox" class="switch" data-key="ff_silentHuman"></label>
+              <label class="p-row"><span>Prediction</span><input type="range" class="range" min="0" max="100" value="20" data-key="ff_silentPred"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="visual">
+          <div class="p-head"><h2>Visual ESP</h2><p>Player overlay dan map awareness</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Player ESP</h3>
+              <label class="p-row"><span>Enable ESP</span><input type="checkbox" class="switch" data-key="ff_esp"></label>
+              <label class="p-row"><span>Box ESP</span><input type="checkbox" class="switch" data-key="ff_box"></label>
+              <label class="p-row"><span>Skeleton</span><input type="checkbox" class="switch" data-key="ff_skel"></label>
+              <label class="p-row"><span>Name Tag</span><input type="checkbox" class="switch" data-key="ff_name"></label>
+              <label class="p-row"><span>Health Bar</span><input type="checkbox" class="switch" data-key="ff_hp"></label>
+              <label class="p-row"><span>Distance</span><input type="checkbox" class="switch" data-key="ff_dist"></label>
+              <label class="p-row"><span>Weapon Info</span><input type="checkbox" class="switch" data-key="ff_weap"></label>
+              <label class="p-row"><span>Team Check</span><input type="checkbox" class="switch" data-key="ff_team"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Radar & Lines</h3>
+              <label class="p-row"><span>Minimap Radar</span><input type="checkbox" class="switch" data-key="ff_radar"></label>
+              <label class="p-row"><span>Radar Zoom</span><input type="range" class="range" min="1" max="20" value="8" data-key="ff_radarZoom"></label>
+              <label class="p-row"><span>Snapline</span><input type="checkbox" class="switch" data-key="ff_snap"></label>
+              <label class="p-row"><span>Direction Arrow</span><input type="checkbox" class="switch" data-key="ff_dir"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Chams</h3>
+              <label class="p-row"><span>Player Chams</span><input type="checkbox" class="switch" data-key="ff_chams"></label>
+              <label class="p-row"><span>Chams Style</span><select class="select" data-key="ff_chamsStyle"><option>Flat</option><option>Glow</option><option>Outline</option></select></label>
+              <label class="p-row"><span>Enemy Color</span><input type="color" class="color" value="#ff2222" data-key="ff_enemyColor"></label>
+              <label class="p-row"><span>Ally Color</span><input type="color" class="color" value="#22ff22" data-key="ff_allyColor"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Extra</h3>
+              <label class="p-row"><span>Zone Alert</span><input type="checkbox" class="switch" data-key="ff_zone"></label>
+              <label class="p-row"><span>Air Drop Marker</span><input type="checkbox" class="switch" data-key="ff_airdrop"></label>
+              <label class="p-row"><span>Recall Alert</span><input type="checkbox" class="switch" data-key="ff_recall"></label>
+              <label class="p-row"><span>Bush Detector</span><input type="checkbox" class="switch" data-key="ff_bush"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="brutal">
+          <div class="p-head"><h2>Brutal Mode</h2><p>Hardcore exploit & damage modifier</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Damage</h3>
+              <label class="p-row"><span>Damage Hack</span><input type="checkbox" class="switch" data-key="ff_dmg"></label>
+              <label class="p-row"><span>Damage Multiplier</span><input type="range" class="range" min="1" max="20" value="1" data-key="ff_dmgMult"></label>
+              <label class="p-row"><span>One Hit Kill</span><input type="checkbox" class="switch" data-key="ff_ohk"></label>
+              <label class="p-row"><span>Ignore Vest</span><input type="checkbox" class="switch" data-key="ff_ignVest"></label>
+              <label class="p-row"><span>Ignore Helmet</span><input type="checkbox" class="switch" data-key="ff_ignHelm"></label>
+              <label class="p-row"><span>Headshot Rate</span><input type="range" class="range" min="0" max="100" value="50" data-key="ff_hsRate"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Speed</h3>
+              <label class="p-row"><span>Speed Hack</span><input type="checkbox" class="switch" data-key="ff_speed"></label>
+              <label class="p-row"><span>Move Speed</span><input type="range" class="range" min="1" max="10" value="2" data-key="ff_moveSp"></label>
+              <label class="p-row"><span>Attack Speed</span><input type="range" class="range" min="1" max="10" value="2" data-key="ff_atkSp"></label>
+              <label class="p-row"><span>No Reload</span><input type="checkbox" class="switch" data-key="ff_noReload"></label>
+              <label class="p-row"><span>Rapid Fire</span><input type="checkbox" class="switch" data-key="ff_rapid"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Immortal</h3>
+              <label class="p-row"><span>God Mode</span><input type="checkbox" class="switch" data-key="ff_god"></label>
+              <label class="p-row"><span>Infinite HP</span><input type="checkbox" class="switch" data-key="ff_infHp"></label>
+              <label class="p-row"><span>Infinite Ammo</span><input type="checkbox" class="switch" data-key="ff_infAmmo"></label>
+              <label class="p-row"><span>No Fall Damage</span><input type="checkbox" class="switch" data-key="ff_noFall"></label>
+              <label class="p-row"><span>Anti Fire</span><input type="checkbox" class="switch" data-key="ff_antiFire"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Exploit</h3>
+              <label class="p-row"><span>Teleport Kill</span><input type="checkbox" class="switch" data-key="ff_tpKill"></label>
+              <label class="p-row"><span>Fly Hack</span><input type="checkbox" class="switch" data-key="ff_fly"></label>
+              <label class="p-row"><span>Fast Landing</span><input type="checkbox" class="switch" data-key="ff_fastLand"></label>
+              <label class="p-row"><span>Under Map</span><input type="checkbox" class="switch" data-key="ff_underMap"></label>
+              <label class="p-row"><span>God Gloo</span><input type="checkbox" class="switch" data-key="ff_godGloo"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="misc">
+          <div class="p-head"><h2>Misc</h2><p>Utility dan fitur tambahan</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Utility</h3>
+              <label class="p-row"><span>Auto Parachute</span><input type="checkbox" class="switch" data-key="ff_autoPara"></label>
+              <label class="p-row"><span>Fast Revive</span><input type="checkbox" class="switch" data-key="ff_fastRevive"></label>
+              <label class="p-row"><span>No Recoil</span><input type="checkbox" class="switch" data-key="ff_noRecoil"></label>
+              <label class="p-row"><span>No Spread</span><input type="checkbox" class="switch" data-key="ff_noSpread"></label>
+              <label class="p-row"><span>Instant Swap</span><input type="checkbox" class="switch" data-key="ff_instSwap"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Anti Detector</h3>
+              <label class="p-row"><span>Anti Ban</span><input type="checkbox" class="switch" data-key="ff_antiBan"></label>
+              <label class="p-row"><span>HWID Spoofer</span><input type="checkbox" class="switch" data-key="ff_hwid"></label>
+              <label class="p-row"><span>Clean Traces</span><input type="checkbox" class="switch" data-key="ff_clean"></label>
+              <label class="p-row"><span>Randomize Sig</span><input type="checkbox" class="switch" data-key="ff_randSig"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Social</h3>
+              <label class="p-row"><span>Custom Tag</span><input type="checkbox" class="switch" data-key="ff_tag"></label>
+              <label class="p-row"><span>Tag Text</span><input type="text" class="text" value="[AMenu]" data-key="ff_tagText"></label>
+              <label class="p-row"><span>Kill Message</span><input type="checkbox" class="switch" data-key="ff_killMsg"></label>
+              <label class="p-row"><span>Auto Emote</span><input type="checkbox" class="switch" data-key="ff_autoEmote"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Performance</h3>
+              <label class="p-row"><span>Reduce Lag</span><input type="checkbox" class="switch" data-key="ff_redLag"></label>
+              <label class="p-row"><span>Low Graphics</span><input type="checkbox" class="switch" data-key="ff_lowGfx"></label>
+              <label class="p-row"><span>Boost FPS</span><input type="checkbox" class="switch" data-key="ff_boostFps"></label>
+              <label class="p-row"><span>Ping Booster</span><input type="checkbox" class="switch" data-key="ff_pingBoost"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="config">
+          <div class="p-head"><h2>Config</h2><p>Kelola konfigurasi yang sudah kamu simpan</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Saved Configs</h3>
+              <div class="config-list">
+                <div class="config-item"><span class="cfg-name">legit_ff_emu.cfg</span><button class="btn-sm">LOAD</button></div>
+                <div class="config-item"><span class="cfg-name">brutal_ff_emu.cfg</span><button class="btn-sm">LOAD</button></div>
+                <div class="config-item"><span class="cfg-name">ranked_ff_emu.cfg</span><button class="btn-sm">LOAD</button></div>
+              </div>
+              <div class="config-actions">
+                <input type="text" class="text" placeholder="Nama config baru...">
+                <button class="btn-primary sm" data-save-cfg>SAVE</button>
+              </div>
+            </div>
+            <div class="p-panel">
+              <h3>Manage</h3>
+              <button class="btn-primary full" data-reset>Reset All Settings</button>
+              <button class="btn-primary full">Export Config (.cfg)</button>
+              <button class="btn-primary full">Import Config</button>
+              <button class="btn-primary full">Share to Friend</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="setting">
+          <div class="p-head"><h2>Setting</h2><p>Pengaturan panel, optimize, dan stream proof — Emulator PC</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Optimize</h3>
+              <label class="p-row"><span>Performance Mode</span><input type="checkbox" class="switch" data-key="ff_perfMode"></label>
+              <label class="p-row"><span>Clear Cache</span><input type="checkbox" class="switch" data-key="ff_clearCache"></label>
+              <label class="p-row"><span>Target FPS</span><input type="range" class="range" min="30" max="240" value="120" data-key="ff_targetFps"></label>
+              <label class="p-row"><span>Mouse Sensitivity</span><input type="range" class="range" min="1" max="10" value="5" data-key="ff_mouse"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Stream Proof</h3>
+              <label class="p-row"><span>Enable Stream Proof</span><input type="checkbox" class="switch" data-key="ff_streamProof"></label>
+              <label class="p-row"><span>Hide Overlay</span><input type="checkbox" class="switch" data-key="ff_hideOverlay"></label>
+              <label class="p-row"><span>Anti Screenshot</span><input type="checkbox" class="switch" data-key="ff_antiSS"></label>
+              <label class="p-row"><span>Anti Recording</span><input type="checkbox" class="switch" data-key="ff_antiRec"></label>
+              <label class="p-row"><span>Discord Hide</span><input type="checkbox" class="switch" data-key="ff_dcHide"></label>
+              <label class="p-row"><span>Watermark Blur</span><input type="checkbox" class="switch" data-key="ff_wmBlur"></label>
+            </div>
+            <div class="p-panel">
+              <h3>UI Panel</h3>
+              <label class="p-row"><span>Menu Key</span><input type="text" class="text" value="Insert" data-key="ff_menuKey"></label>
+              <label class="p-row"><span>Theme</span><select class="select" data-key="ff_theme"><option>Dark Grey</option><option>Steel</option><option>Graphite</option></select></label>
+              <label class="p-row"><span>Opacity</span><input type="range" class="range" min="50" max="100" value="95" data-key="ff_opacity"></label>
+              <label class="p-row"><span>Animations</span><input type="checkbox" class="switch" data-key="ff_anim" checked></label>
+            </div>
+            <div class="p-panel">
+              <h3>Audio</h3>
+              <label class="p-row"><span>Sound FX</span><input type="checkbox" class="switch" data-key="ff_sfx" checked></label>
+              <label class="p-row"><span>Volume</span><input type="range" class="range" min="0" max="100" value="60" data-key="ff_vol"></label>
+            </div>
+            <div class="p-panel">
+              <h3>About</h3>
+              <div class="about-info">
+                <div class="about-row"><span>Version</span><b>v7.0.0</b></div>
+                <div class="about-row"><span>Platform</span><b>Emulator (PC)</b></div>
+                <div class="about-row"><span>Status</span><b class="online">UNDETECTED</b></div>
+                <div class="about-row"><span>Uptime</span><b class="uptime">00:00:00</b></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="p-footer">
+      <div class="p-footer-left"><span class="dot green"></span> System Ready</div>
+      <div class="p-footer-center">Visual only — presentation demo</div>
+      <div class="p-footer-right clock">00:00:00</div>
+    </footer>
+  </div>
+
+  <!-- ============ FIVEM PANEL ============ -->
+  <div class="panel-window hidden" id="panelFiveM">
+    <header class="p-topbar">
+      <div class="p-brand">
+        <div class="brand-logo small">
+          <svg viewBox="0 0 100 100">
+            <path d="M 22 78 L 50 12 L 78 78 L 65 78 L 58 60 L 42 60 L 35 78 Z M 47 48 L 53 48 L 50 35 Z" fill="currentColor"/>
+            <path d="M 65 48 L 90 38 L 78 55 L 65 60 Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="p-brand-text">AMenu<small>FiveM</small></div>
+      </div>
+      <div class="p-topbar-center"><div class="p-tab-indicator" id="fmIndicator">Aimbot</div></div>
+      <div class="p-topbar-right">
+        <div class="p-badge green"><span class="dot green"></span> INJECTED</div>
+        <div class="p-badge">PREMIUM</div>
+        <button class="p-close" data-close>✕</button>
+      </div>
+    </header>
+
+    <div class="p-body">
+      <aside class="p-sidebar">
+        <nav class="p-nav-list">
+          <button class="p-nav active" data-tab="aimbot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span>Aimbot</span></button>
+          <button class="p-nav" data-tab="silent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 L15 9 L22 9 L16 13 L18 20 L12 16 L6 20 L8 13 L2 9 L9 9 Z"/></svg><span>Silent Aim</span></button>
+          <button class="p-nav" data-tab="trigger"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg><span>Triggerbot</span></button>
+          <button class="p-nav" data-tab="weapon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 3.5L19 8l-9 9-4 1-1 3-3-1 1-3 1-4 9-9z"/></svg><span>Weapon</span></button>
+          <button class="p-nav" data-tab="visuals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>Visuals</span></button>
+          <button class="p-nav" data-tab="player"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/></svg><span>Player</span></button>
+          <button class="p-nav" data-tab="vehicle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 17h14M5 17a2 2 0 01-2-2v-3l2-5h14l2 5v3a2 2 0 01-2 2M7 17v2M17 17v2"/><circle cx="7.5" cy="14.5" r=".5" fill="currentColor"/><circle cx="16.5" cy="14.5" r=".5" fill="currentColor"/></svg><span>Vehicle</span></button>
+          <button class="p-nav" data-tab="movement"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Movement</span></button>
+          <button class="p-nav" data-tab="world"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>World</span></button>
+          <button class="p-nav" data-tab="misc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Misc</span></button>
+          <button class="p-nav" data-tab="config"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg><span>Config</span></button>
+          <button class="p-nav" data-tab="setting"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg><span>Setting</span></button>
+        </nav>
+        <div class="p-sidebar-footer">
+          <div class="p-stat"><span>FPS</span><b id="fmFps">144</b></div>
+          <div class="p-stat"><span>PING</span><b id="fmPing">12ms</b></div>
+        </div>
+      </aside>
+
+      <main class="p-content">
+        <section class="p-tab active" data-tab="aimbot">
+          <div class="p-head"><h2>Aimbot</h2><p>Precision targeting system</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Core Aim</h3>
+              <label class="p-row"><span>Enable Aimbot</span><input type="checkbox" class="switch" data-key="fm_aim"></label>
+              <label class="p-row"><span>Visibility Check</span><input type="checkbox" class="switch" data-key="fm_vis"></label>
+              <label class="p-row"><span>Team Check</span><input type="checkbox" class="switch" data-key="fm_team"></label>
+              <label class="p-row"><span>Wallbang</span><input type="checkbox" class="switch" data-key="fm_wallbang"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Targeting</h3>
+              <label class="p-row"><span>Bone</span><select class="select" data-key="fm_bone"><option>Head</option><option>Neck</option><option>Chest</option><option>Nearest</option></select></label>
+              <label class="p-row"><span>Priority</span><select class="select" data-key="fm_prio"><option>Distance</option><option>Lowest HP</option><option>Crosshair</option></select></label>
+              <label class="p-row"><span>Aim Key</span><select class="select" data-key="fm_key"><option>Right Mouse</option><option>Left Alt</option><option>Caps Lock</option><option>Shift</option></select></label>
+              <label class="p-row"><span>Max Distance</span><input type="range" class="range" min="50" max="2000" value="500" data-key="fm_maxDist"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Fine Tune</h3>
+              <label class="p-row"><span>FOV Radius</span><input type="range" class="range" min="1" max="360" value="90" data-key="fm_fov"></label>
+              <label class="p-row"><span>Smoothness</span><input type="range" class="range" min="1" max="20" value="5" data-key="fm_smooth"></label>
+              <label class="p-row"><span>Prediction</span><input type="range" class="range" min="0" max="100" value="0" data-key="fm_pred"></label>
+              <label class="p-row"><span>Randomize Angle</span><input type="range" class="range" min="0" max="10" value="0" data-key="fm_rand"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Extra</h3>
+              <label class="p-row"><span>Auto Fire</span><input type="checkbox" class="switch" data-key="fm_autoFire"></label>
+              <label class="p-row"><span>Auto Scope</span><input type="checkbox" class="switch" data-key="fm_autoScope"></label>
+              <label class="p-row"><span>Instant Hit</span><input type="checkbox" class="switch" data-key="fm_instHit"></label>
+              <label class="p-row"><span>No Recoil</span><input type="checkbox" class="switch" data-key="fm_noRecoil"></label>
+              <label class="p-row"><span>No Spread</span><input type="checkbox" class="switch" data-key="fm_noSpread"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="silent">
+          <div class="p-head"><h2>Silent Aim</h2><p>Bullet redirect tanpa mengubah crosshair player</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Core Silent</h3>
+              <label class="p-row"><span>Enable Silent Aim</span><input type="checkbox" class="switch" data-key="fm_silentEnable"></label>
+              <label class="p-row"><span>Silent Mode</span><select class="select" data-key="fm_silentMode"><option>Perfect</option><option>Legit</option><option>Rage</option><option>Custom</option></select></label>
+              <label class="p-row"><span>Always On</span><input type="checkbox" class="switch" data-key="fm_silentAlways"></label>
+              <label class="p-row"><span>Toggle Key</span><select class="select" data-key="fm_silentKey"><option>Right Mouse</option><option>Left Alt</option><option>Caps Lock</option><option>Shift</option><option>X</option></select></label>
+              <label class="p-row"><span>Only On ADS</span><input type="checkbox" class="switch" data-key="fm_silentAds"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Hitbox</h3>
+              <label class="p-row"><span>Target Bone</span><select class="select" data-key="fm_silentBone"><option>Head</option><option>Neck</option><option>Chest</option><option>Nearest</option></select></label>
+              <label class="p-row"><span>Hitbox Scale</span><input type="range" class="range" min="1" max="20" value="8" data-key="fm_silentHitbox"></label>
+              <label class="p-row"><span>Auto Headshot</span><input type="checkbox" class="switch" data-key="fm_silentHs"></label>
+              <label class="p-row"><span>Multi-Target</span><input type="checkbox" class="switch" data-key="fm_silentMulti"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Advanced</h3>
+              <label class="p-row"><span>Through Wall</span><input type="checkbox" class="switch" data-key="fm_silentWall"></label>
+              <label class="p-row"><span>Ignore Team</span><input type="checkbox" class="switch" data-key="fm_silentIgnTeam"></label>
+              <label class="p-row"><span>Ignore Friend</span><input type="checkbox" class="switch" data-key="fm_silentIgnFriend"></label>
+              <label class="p-row"><span>Visible Only</span><input type="checkbox" class="switch" data-key="fm_silentVisible"></label>
+              <label class="p-row"><span>Max Distance</span><input type="range" class="range" min="50" max="2000" value="500" data-key="fm_silentDist"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Fine Tune</h3>
+              <label class="p-row"><span>Miss Chance</span><input type="range" class="range" min="0" max="50" value="0" data-key="fm_silentMiss"></label>
+              <label class="p-row"><span>Delay (ms)</span><input type="range" class="range" min="0" max="200" value="20" data-key="fm_silentDelay"></label>
+              <label class="p-row"><span>Humanize</span><input type="checkbox" class="switch" data-key="fm_silentHuman"></label>
+              <label class="p-row"><span>Prediction</span><input type="range" class="range" min="0" max="100" value="20" data-key="fm_silentPred"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="trigger">
+          <div class="p-head"><h2>Triggerbot</h2><p>Auto-fire saat crosshair di target</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Core</h3>
+              <label class="p-row"><span>Enable Trigger</span><input type="checkbox" class="switch" data-key="fm_trig"></label>
+              <label class="p-row"><span>Auto Fire</span><input type="checkbox" class="switch" data-key="fm_trigAuto"></label>
+              <label class="p-row"><span>Head Only</span><input type="checkbox" class="switch" data-key="fm_trigHead"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Settings</h3>
+              <label class="p-row"><span>Hit Chance</span><input type="range" class="range" min="0" max="100" value="85" data-key="fm_hitChance"></label>
+              <label class="p-row"><span>Delay (ms)</span><input type="range" class="range" min="0" max="300" value="50" data-key="fm_trigDelay"></label>
+              <label class="p-row"><span>Burst Mode</span><select class="select" data-key="fm_burst"><option>Single</option><option>2 Round</option><option>3 Round</option><option>Full Auto</option></select></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="weapon">
+          <div class="p-head"><h2>Weapon</h2><p>Modifikasi senjata</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Modifier</h3>
+              <label class="p-row"><span>No Sway</span><input type="checkbox" class="switch" data-key="fm_noSway"></label>
+              <label class="p-row"><span>Rapid Fire</span><input type="checkbox" class="switch" data-key="fm_rapid"></label>
+              <label class="p-row"><span>Infinite Ammo</span><input type="checkbox" class="switch" data-key="fm_infAmmo"></label>
+              <label class="p-row"><span>Instant Reload</span><input type="checkbox" class="switch" data-key="fm_instReload"></label>
+              <label class="p-row"><span>Damage x</span><input type="range" class="range" min="1" max="20" value="1" data-key="fm_dmg"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Advanced</h3>
+              <label class="p-row"><span>Bullet TP</span><input type="checkbox" class="switch" data-key="fm_bulletTp"></label>
+              <label class="p-row"><span>Magic Bullet</span><input type="checkbox" class="switch" data-key="fm_magic"></label>
+              <label class="p-row"><span>Fire Rate</span><input type="range" class="range" min="1" max="10" value="1" data-key="fm_fireRate"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="visuals">
+          <div class="p-head"><h2>Visuals</h2><p>ESP, wallhack, overlay</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Player ESP</h3>
+              <label class="p-row"><span>Enable ESP</span><input type="checkbox" class="switch" data-key="fm_esp"></label>
+              <label class="p-row"><span>Box</span><input type="checkbox" class="switch" data-key="fm_box"></label>
+              <label class="p-row"><span>Skeleton</span><input type="checkbox" class="switch" data-key="fm_skel"></label>
+              <label class="p-row"><span>Name</span><input type="checkbox" class="switch" data-key="fm_name"></label>
+              <label class="p-row"><span>Health Bar</span><input type="checkbox" class="switch" data-key="fm_hp"></label>
+              <label class="p-row"><span>Distance</span><input type="checkbox" class="switch" data-key="fm_dist"></label>
+              <label class="p-row"><span>Weapon</span><input type="checkbox" class="switch" data-key="fm_weap"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Radar & Lines</h3>
+              <label class="p-row"><span>2D Radar</span><input type="checkbox" class="switch" data-key="fm_radar"></label>
+              <label class="p-row"><span>Radar Zoom</span><input type="range" class="range" min="1" max="20" value="8" data-key="fm_radarZoom"></label>
+              <label class="p-row"><span>Snapline</span><input type="checkbox" class="switch" data-key="fm_snap"></label>
+              <label class="p-row"><span>Direction Arrow</span><input type="checkbox" class="switch" data-key="fm_dir"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Chams</h3>
+              <label class="p-row"><span>Player Chams</span><input type="checkbox" class="switch" data-key="fm_chams"></label>
+              <label class="p-row"><span>Chams Style</span><select class="select" data-key="fm_chamsStyle"><option>Flat</option><option>Wireframe</option><option>Glow</option><option>XQZ</option></select></label>
+              <label class="p-row"><span>Enemy Color</span><input type="color" class="color" value="#ff2222" data-key="fm_enemyColor"></label>
+              <label class="p-row"><span>Team Color</span><input type="color" class="color" value="#22ff22" data-key="fm_teamColor"></label>
+            </div>
+            <div class="p-panel">
+              <h3>World</h3>
+              <label class="p-row"><span>No Fog</span><input type="checkbox" class="switch" data-key="fm_noFog"></label>
+              <label class="p-row"><span>Full Bright</span><input type="checkbox" class="switch" data-key="fm_bright"></label>
+              <label class="p-row"><span>Remove Grass</span><input type="checkbox" class="switch" data-key="fm_noGrass"></label>
+              <label class="p-row"><span>See Through Walls</span><input type="checkbox" class="switch" data-key="fm_xtWall"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="player">
+          <div class="p-head"><h2>Player</h2><p>Modifikasi karakter</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Model</h3>
+              <label class="p-row"><span>Character Changer</span><input type="checkbox" class="switch" data-key="fm_charChange"></label>
+              <label class="p-row"><span>Model ID</span><input type="text" class="text" value="mp_m_freemode_01" data-key="fm_modelId"></label>
+              <label class="p-row"><span>Invisible</span><input type="checkbox" class="switch" data-key="fm_invis"></label>
+              <label class="p-row"><span>Giant Mode</span><input type="checkbox" class="switch" data-key="fm_giant"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Health</h3>
+              <label class="p-row"><span>God Mode</span><input type="checkbox" class="switch" data-key="fm_god"></label>
+              <label class="p-row"><span>Infinite Armor</span><input type="checkbox" class="switch" data-key="fm_infArmor"></label>
+              <label class="p-row"><span>Infinite Stamina</span><input type="checkbox" class="switch" data-key="fm_infStam"></label>
+              <label class="p-row"><span>No Fall Damage</span><input type="checkbox" class="switch" data-key="fm_noFall"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="vehicle">
+          <div class="p-head"><h2>Vehicle</h2><p>Kendaraan & spawn</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Modifier</h3>
+              <label class="p-row"><span>Vehicle God</span><input type="checkbox" class="switch" data-key="fm_vehGod"></label>
+              <label class="p-row"><span>Speed Multiplier</span><input type="range" class="range" min="1" max="10" value="2" data-key="fm_vehSpeed"></label>
+              <label class="p-row"><span>Auto Repair</span><input type="checkbox" class="switch" data-key="fm_autoRepair"></label>
+              <label class="p-row"><span>No Collision</span><input type="checkbox" class="switch" data-key="fm_noColl"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Spawn</h3>
+              <label class="p-row"><span>Spawn Vehicle</span><input type="checkbox" class="switch" data-key="fm_spawnVeh"></label>
+              <label class="p-row"><span>Vehicle ID</span><input type="text" class="text" value="adder" data-key="fm_vehId"></label>
+              <label class="p-row"><span>Delete Nearby</span><input type="checkbox" class="switch" data-key="fm_delNear"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="movement">
+          <div class="p-head"><h2>Movement</h2><p>Exploit mobility</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Basic</h3>
+              <label class="p-row"><span>Speed Hack</span><input type="checkbox" class="switch" data-key="fm_speed"></label>
+              <label class="p-row"><span>Speed Multiplier</span><input type="range" class="range" min="1" max="10" value="2" data-key="fm_speedMult"></label>
+              <label class="p-row"><span>Infinite Jump</span><input type="checkbox" class="switch" data-key="fm_infJump"></label>
+              <label class="p-row"><span>Bunny Hop</span><input type="checkbox" class="switch" data-key="fm_bhop"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Advanced</h3>
+              <label class="p-row"><span>Fly Hack</span><input type="checkbox" class="switch" data-key="fm_fly"></label>
+              <label class="p-row"><span>No Clip</span><input type="checkbox" class="switch" data-key="fm_noClip"></label>
+              <label class="p-row"><span>Teleport</span><input type="checkbox" class="switch" data-key="fm_tp"></label>
+              <label class="p-row"><span>Super Jump</span><input type="checkbox" class="switch" data-key="fm_superJump"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="world">
+          <div class="p-head"><h2>World</h2><p>Environment control</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Weather</h3>
+              <label class="p-row"><span>Weather Changer</span><input type="checkbox" class="switch" data-key="fm_weather"></label>
+              <label class="p-row"><span>Weather</span><select class="select" data-key="fm_weatherType"><option>Clear</option><option>Rain</option><option>Thunder</option><option>Snow</option><option>Fog</option></select></label>
+              <label class="p-row"><span>Time Freeze</span><input type="checkbox" class="switch" data-key="fm_timeFreeze"></label>
+              <label class="p-row"><span>Time of Day</span><input type="range" class="range" min="0" max="24" value="12" data-key="fm_timeDay"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Teleport</h3>
+              <label class="p-row"><span>Waypoint TP</span><input type="checkbox" class="switch" data-key="fm_wpTp"></label>
+              <label class="p-row"><span>Player TP</span><input type="checkbox" class="switch" data-key="fm_playerTp"></label>
+              <label class="p-row"><span>Coord X</span><input type="text" class="text" value="0" data-key="fm_cx"></label>
+              <label class="p-row"><span>Coord Y</span><input type="text" class="text" value="0" data-key="fm_cy"></label>
+              <label class="p-row"><span>Coord Z</span><input type="text" class="text" value="0" data-key="fm_cz"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="misc">
+          <div class="p-head"><h2>Misc</h2><p>Utility & anti-detect</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Utility</h3>
+              <label class="p-row"><span>Auto Heal</span><input type="checkbox" class="switch" data-key="fm_autoHeal"></label>
+              <label class="p-row"><span>Auto Reload</span><input type="checkbox" class="switch" data-key="fm_autoReload"></label>
+              <label class="p-row"><span>Auto Pickup</span><input type="checkbox" class="switch" data-key="fm_autoPick"></label>
+              <label class="p-row"><span>Fast Interact</span><input type="checkbox" class="switch" data-key="fm_fastInter"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Anti-Detect</h3>
+              <label class="p-row"><span>Stream Proof</span><input type="checkbox" class="switch" data-key="fm_streamProof"></label>
+              <label class="p-row"><span>Anti Screenshot</span><input type="checkbox" class="switch" data-key="fm_antiSS"></label>
+              <label class="p-row"><span>HWID Spoofer</span><input type="checkbox" class="switch" data-key="fm_hwid"></label>
+              <label class="p-row"><span>Clean Traces</span><input type="checkbox" class="switch" data-key="fm_clean"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="config">
+          <div class="p-head"><h2>Config</h2><p>Kelola konfigurasi yang sudah disimpan</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>Saved Configs</h3>
+              <div class="config-list">
+                <div class="config-item"><span class="cfg-name">legit_fivem.cfg</span><button class="btn-sm">LOAD</button></div>
+                <div class="config-item"><span class="cfg-name">rage_fivem.cfg</span><button class="btn-sm">LOAD</button></div>
+                <div class="config-item"><span class="cfg-name">rp_stealth.cfg</span><button class="btn-sm">LOAD</button></div>
+              </div>
+              <div class="config-actions">
+                <input type="text" class="text" placeholder="Nama config baru...">
+                <button class="btn-primary sm" data-save-cfg>SAVE</button>
+              </div>
+            </div>
+            <div class="p-panel">
+              <h3>Manage</h3>
+              <button class="btn-primary full" data-reset>Reset All Settings</button>
+              <button class="btn-primary full">Export Config (.cfg)</button>
+              <button class="btn-primary full">Import Config</button>
+              <button class="btn-primary full">Share to Friend</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-tab" data-tab="setting">
+          <div class="p-head"><h2>Setting</h2><p>Panel, keybind, dan optimize</p></div>
+          <div class="p-grid">
+            <div class="p-panel">
+              <h3>UI Panel</h3>
+              <label class="p-row"><span>Menu Key</span><input type="text" class="text" value="Insert" data-key="fm_menuKey"></label>
+              <label class="p-row"><span>Theme</span><select class="select" data-key="fm_theme"><option>Dark Grey</option><option>Steel</option><option>Graphite</option></select></label>
+              <label class="p-row"><span>Opacity</span><input type="range" class="range" min="50" max="100" value="95" data-key="fm_opacity"></label>
+              <label class="p-row"><span>Animations</span><input type="checkbox" class="switch" data-key="fm_anim" checked></label>
+            </div>
+            <div class="p-panel">
+              <h3>Optimize</h3>
+              <label class="p-row"><span>Performance Mode</span><input type="checkbox" class="switch" data-key="fm_perfMode"></label>
+              <label class="p-row"><span>Clear Cache</span><input type="checkbox" class="switch" data-key="fm_clearCache"></label>
+              <label class="p-row"><span>Target FPS</span><input type="range" class="range" min="30" max="240" value="144" data-key="fm_targetFps"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Audio</h3>
+              <label class="p-row"><span>Sound FX</span><input type="checkbox" class="switch" data-key="fm_sfx" checked></label>
+              <label class="p-row"><span>Volume</span><input type="range" class="range" min="0" max="100" value="60" data-key="fm_vol"></label>
+            </div>
+            <div class="p-panel">
+              <h3>Keybinds</h3>
+              <div class="keybind-list">
+                <div class="kb-item"><span>Aimbot</span><input type="text" value="RMB" readonly></div>
+                <div class="kb-item"><span>Silent Aim</span><input type="text" value="Left Alt" readonly></div>
+                <div class="kb-item"><span>Trigger</span><input type="text" value="MMB" readonly></div>
+                <div class="kb-item"><span>ESP</span><input type="text" value="F1" readonly></div>
+                <div class="kb-item"><span>Panic</span><input type="text" value="DELETE" readonly></div>
+              </div>
+            </div>
+            <div class="p-panel">
+              <h3>About</h3>
+              <div class="about-info">
+                <div class="about-row"><span>Version</span><b>v7.0.0</b></div>
+                <div class="about-row"><span>Status</span><b class="online">UNDETECTED</b></div>
+                <div class="about-row"><span>Uptime</span><b class="uptime">00:00:00</b></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="p-footer">
+      <div class="p-footer-left"><span class="dot green"></span> System Ready</div>
+      <div class="p-footer-center">Visual only — presentation demo</div>
+      <div class="p-footer-right clock">00:00:00</div>
+    </footer>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
